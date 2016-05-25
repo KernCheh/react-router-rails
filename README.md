@@ -2,16 +2,16 @@
 
 [![Gem Version](https://badge.fury.io/rb/react-router-rails.svg)](https://badge.fury.io/rb/react-router-rails.svg)
 
-[React Router](https://github.com/rackt/react-router/) for Rails asset pipeline
+[React Router](https://github.com/reactjs/react-router) for Rails asset pipeline
 
-- React Router version: [0.13.3](https://github.com/rackt/react-router/tree/v0.13.3)
+- React Router version: [2.4.1](https://github.com/reactjs/react-router/releases/tag/v2.4.1)
 
 ## Installation
 
 1. Add to your `Gemfile` and install with bundler:
 
   ```ruby
-  gem 'react-router-rails', '~>0.13.3.2'
+  gem 'react-router-rails'
   ```
 
   ```bash
@@ -47,8 +47,8 @@
   var Route = ReactRouter.Route;
 
   this.MyRoutes = (
-    <Route handler={App}>
-      <Route name='home' handler={Home} path='/' />
+    <Route component={App}>
+      <Route name='home' component={Home} path='/' />
       ...
     </Route>
   );
