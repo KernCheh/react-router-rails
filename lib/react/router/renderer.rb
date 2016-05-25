@@ -46,14 +46,14 @@ module React
         jscode = <<-JS
           function() {
             var str = '';
-            var history = 'HistoryLocation',
+            var history = 'browserHistory',
             data = #{react_props},
             props = $.extend({history: history}, data);
             if (!!props.history) {
               props.history = (
-                #{location.to_json} == 'HistoryLocation' ?
-                ReactRouter.browserHistory :
-                ReactRouter.hashHistory
+                #{location.to_json} == 'hashHistory' ?
+                ReactRouter.hashHistory :
+                ReactRouter.browserHistory
               )
             }
             else {

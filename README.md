@@ -60,16 +60,16 @@
   <%= react_router 'MyRoutes' %>
   ```
 
-  Optionally set the location handler (defaults to HashLocation):
+  Optionally set the location handler (defaults to browserHistory):
 
   ```erb
-  <%= react_router 'MyRoutes', 'HistoryLocation' %>
+  <%= react_router 'MyRoutes', 'hashHistory' %>
   ```
 
   If you use server rendering:
 
   ```erb
-  <%= react_router 'MyRoutes', 'HistoryLocation', {}, { prerender_location: path_to_route } %>
+  <%= react_router 'MyRoutes', 'hashHistory', {}, { prerender_location: path_to_route } %>
   ```
 4. Require your components folder AFTER your react_router:
 
