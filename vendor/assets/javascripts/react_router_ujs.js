@@ -36,9 +36,12 @@
       var dataJson = routerNode.getAttribute(DATA_CLASS_NAME);
       var data = JSON.parse(dataJson);
 
-      ReactRouter.run(routes, location, function (Handler) {
-        ReactDOM.render(React.createElement(Handler, data), routerNode);
-      });
+      var Router = React.createElement(
+        ReactRouter.Router,
+        $.extend({}, data),
+        routes
+      );
+      ReactDOM.render(Router, routerNode);
     }
   };
 
