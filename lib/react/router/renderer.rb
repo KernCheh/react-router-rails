@@ -46,9 +46,24 @@ module React
         jscode = <<-JS
           function() {
             var str = '';
-            ReactRouter.run(#{routes}, #{location.to_json}, function (Handler) {
-              str = ReactDOMServer.renderToString(React.createElement(Handler, #{react_props}));
-            });
+            var history = 'HistoryLocation',
+            data = #{react_props},
+            props = $.extend({history: history}, data);
+            if (!!props.history) {
+              props.history = (
+                #{location.to_json} == 'HistoryLocation' ?
+                ReactRouter.browserHistory :
+                ReactRouter.hashHistory
+              )
+            }
+            else {
+              props.history = ReactRouter.browserHistory;
+            }
+            ReactDOM.render(React.createElement(
+              ReactRouter.Router,
+              props,
+              #{routes}
+            ), routerNode);
             return str;
           }()
         JS

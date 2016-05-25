@@ -31,14 +31,25 @@
       var routes = window[className] || eval.call(window, className);
 
       var locationName = routerNode.getAttribute(LOCATION_CLASS_NAME);
-      var location = ReactRouter[locationName] ;
 
       var dataJson = routerNode.getAttribute(DATA_CLASS_NAME);
       var data = JSON.parse(dataJson);
 
+      var history = 'HistoryLocation',
+      props = $.extend({history: history}, data);
+      if (!!props.history) {
+        props.history = (
+          locationName == 'HistoryLocation' ?
+          ReactRouter.browserHistory :
+          ReactRouter.hashHistory
+        )
+      }
+      else {
+        props.history = ReactRouter.browserHistory;
+      }
       var Router = React.createElement(
         ReactRouter.Router,
-        $.extend({}, data),
+        $.extend({history: }, data),
         routes
       );
       ReactDOM.render(Router, routerNode);
